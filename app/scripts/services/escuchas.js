@@ -9,7 +9,33 @@
  */
 angular.module('chusmearemosApp')
   .service('escuchas', function ($resource) {
-    return $resource( 'data/escuchas.json', {}, {
+    var cacheEscuchas;
+
+    var res = $resource( 'data/escuchas.json', {}, {
       get: {method:'GET', isArray:true, cache: true}
     });
+
+    var all = function(callback){
+      res.get({}, function(res){
+        cacheEscuchas = res;
+        callback(res);
+      });
+    };
+
+    var byId = function(id, callback){
+      if (cacheEscuchas){
+        callback(cacheEscuchas[id])
+      }else{
+        res.get({}, function(res){
+          cacheEscuchas = res;
+          callback(res[id]);
+        });
+      }
+    };
+
+
+    return {
+      all: all,
+      byId: byId
+    };
   });

@@ -17,7 +17,9 @@ angular
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    "com.2fdevs.videogular",
+    "com.2fdevs.videogular.plugins.controls"
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
@@ -35,6 +37,11 @@ angular
       url: "",
       templateUrl: "views/grafo.html",
       controller: 'GrafoCtrl'
+    })
+    .state('main.grafo.escucha', {
+      url: "escucha/:id",
+      templateUrl: "views/grafo.escucha.html",
+      controller: 'GrafoEscuchaCtrl'
     });
 
   });

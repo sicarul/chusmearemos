@@ -1,1 +1,41 @@
-<div id="grafo"></div>
+<p>Graficadas <b>{{grafo.num}}</b> escuchas. No se incluyen las <b>{{grafo.notincluded}}</b> grabaciones que no tienen datos de origen/destino</p>
+<div class="row">
+<div id="grafo" class="col-sm-9" style="width:960px;"></div>
+<div class="col-sm-3" id="metadata" ng-if="loading">
+  <h3>Espere por favor</h3>
+</div>
+<div class="col-sm-3" id="metadata" ng-if="selected.node.name && loading == false">
+  <h3>Linea {{selected.node.name}}</h3>
+
+  <table class="table table-striped" ng-if="selected.out.length > 0">
+    <thead>
+      <tr>
+        <th colspan="2">Llamadas salientes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="call in selected.out">
+        <td><a ui-sref=".escucha({id:call.id})">{{call.inicio | date:'medium'}}</a></td>
+        <td><a ui-sref=".escucha({id:call.id})">{{call.destino}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table class="table table-striped" ng-if="selected.in.length > 0">
+    <thead>
+      <tr>
+        <th colspan="2">Llamadas entrantes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="call in selected.in">
+        <td><a ui-sref=".escucha({id:call.id})">{{call.inicio | date:'medium'}}</a></td>
+        <td><a ui-sref=".escucha({id:call.id})">{{call.origen}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+<div ui-view autoscroll="false"></div>
