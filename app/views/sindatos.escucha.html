@@ -1,0 +1,37 @@
+<div class="Modal-backdrop"></div>
+<div class="Modal-holder" autoscroll="false">
+
+  <div class="Modal-box" ng-if="!escucha">
+    Espere...
+  </div>
+  <div class="Modal-box" ng-if="escucha">
+    <h3>Escucha de Nisman: <b>{{id}}</b></h3>
+
+    <div style="padding-top:50px; padding-bottom:30px;">
+      <videogular vg-theme="audio.theme">
+          <vg-media vg-src="audio.sources" vg-type="audio">
+        </vg-media>
+
+        <vg-controls>
+          <vg-play-pause-button></vg-play-pause-button>
+          <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+          <vg-scrub-bar>
+            <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+          </vg-scrub-bar>
+          <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+          <vg-volume>
+            <vg-mute-button></vg-mute-button>
+            <vg-volume-bar></vg-volume-bar>
+          </vg-volume>
+          <vg-fullscreen-button></vg-fullscreen-button>
+        </vg-controls>
+      </videogular>
+    </div>
+
+    <div class="text-center">
+    <a class="btn btn-primary" href="http://es.causanisman.wikia.com/wiki/{{id}}" target="_blank">Wiki transcripcion</a>
+
+    <a class="btn btn-default" ui-sref="^">Volver</a>
+    </div>
+  </div>
+</div>

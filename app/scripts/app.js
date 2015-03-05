@@ -19,7 +19,8 @@ angular
     'ngTouch',
     'ui.router',
     "com.2fdevs.videogular",
-    "com.2fdevs.videogular.plugins.controls"
+    "com.2fdevs.videogular.plugins.controls",
+    'ui.bootstrap'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
@@ -38,10 +39,28 @@ angular
       templateUrl: "views/grafo.html",
       controller: 'GrafoCtrl'
     })
-    .state('main.grafo.escucha', {
-      url: "escucha/:id",
-      templateUrl: "views/grafo.escucha.html",
-      controller: 'GrafoEscuchaCtrl'
-    });
+      .state('main.grafo.escucha', {
+        url: "escucha/{id:int}",
+        templateUrl: "views/grafo.escucha.html",
+        controller: 'GrafoEscuchaCtrl'
+      })
+
+    .state('main.restantes', {
+      url: "restantes",
+      templateUrl: "views/sindatos.html",
+      controller: 'SindatosCtrl'
+    })
+      .state('main.restantes.page', {
+        url: "/{pag:int}",
+        templateUrl: "views/sindatos.pagina.html",
+        controller: 'SindatosPaginaCtrl'
+      })
+        .state('main.restantes.page.escucha', {
+          url: "/escucha/{id:int}",
+          templateUrl: "views/sindatos.escucha.html",
+          controller: 'SindatosEscuchaCtrl'
+        })
+
+    ;
 
   });

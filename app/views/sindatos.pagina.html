@@ -1,0 +1,61 @@
+<div align="center">
+  <pagination
+    total-items="numPages"
+    ng-model="activePage"
+    max-size="5"
+    class="pagination-sm"
+    boundary-links="true"
+    rotate="false"
+    previous-text="Anterior"
+    next-text="Siguiente"
+    first-text="Primera"
+    last-text="Ultima"
+    ng-click="changePage()"
+    ></pagination>
+</div>
+
+<div class="row">
+<div class="col-md-3 col-md-offset-1">
+  <div class="list-group">
+    <a href="#" class="list-group-item" ng-repeat="escucha in data | limitTo: perPage/3" ui-sref-active="active" ui-sref=".escucha({id: escucha.id})">
+      {{escucha.filename}}
+    </a>
+  </div>
+
+</div>
+<div class="col-md-4">
+  <div class="list-group">
+    <a href="#" class="list-group-item" ng-repeat="escucha in data | limitTo: perPage/1.5 | limitTo: -perPage/3" ui-sref-active="active" ui-sref=".escucha({id: escucha.id})">
+      {{escucha.filename}}
+    </a>
+  </div>
+
+</div>
+<div class="col-md-3">
+  <div class="list-group">
+    <a href="#" class="list-group-item" ng-repeat="escucha in data | limitTo: -perPage/3" ui-sref-active="active" ui-sref=".escucha({id: escucha.id})">
+      {{escucha.filename}}
+    </a>
+  </div>
+
+</div>
+</div>
+
+<div align="center">
+  <pagination
+    total-items="numPages"
+    ng-model="activePage"
+    max-size="5"
+    class="pagination-sm"
+    boundary-links="true"
+    rotate="false"
+    previous-text="Anterior"
+    next-text="Siguiente"
+    first-text="Primera"
+    last-text="Ultima"
+    ng-click="changePage()"
+    ></pagination>
+
+    </div>
+
+    <div ui-view autoscroll="false"></div>
