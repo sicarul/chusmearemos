@@ -12,22 +12,26 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Chusmearemos</a>
+        <a class="navbar-brand" href="#/">Chusmearemos</a>
       </div>
 
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
+          <li ui-sref-active="active"><a ui-sref='.grafo'>Grafo</a></li>
+          <li ui-sref-active="active"><a ui-sref='.restantes.page({pag:1})'>Restantes</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
           <li>
 
             <a target="_blank" href="http://sicarul.com">Creado por Pablo Seibelt</a>
           </li>
           <li>
+            <a href popover-title="Donar Bitcoin" popover='Donar a la direccion 1LgShXaqvHhYtxxwMxy7BCWre7QEbdH9Bu' popover-placement="bottom" href>Donar (BTC)</a>
+          </li>
+          <li>
             <a target="_blank" href="https://github.com/sicarul/chusmearemos">Disponible en github</a>
           </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li ui-sref-active><a ui-sref='.grafo'>Grafo</a></li>
-          <li ui-sref-active><a ui-sref='.restantes.page({pag:1})'>Restantes</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
