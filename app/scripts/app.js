@@ -62,6 +62,20 @@ angular
           controller: 'SindatosEscuchaCtrl'
         })
 
+    .state('main.search', {
+      url: "buscar",
+      templateUrl: "views/search.html",
+      controller: 'SearchCtrl'
+    })
     ;
 
   });
+
+
+  if(typeof(String.prototype.trim) === "undefined")
+  {
+    String.prototype.trim = function()
+  {
+    return String(this).replace(/^\s+|\s+$/g, '');
+  };
+}

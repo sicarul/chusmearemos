@@ -11,13 +11,14 @@ angular.module('chusmearemosApp')
   .service('escuchas', function ($resource) {
     var cacheEscuchas;
     var cacheRestantes;
+    var escuchasByName;
 
-    var res = $resource( 'data/escuchas.json', {}, {
+    var escuchasRes = $resource( 'data/escuchas.json', {}, {
       get: {method:'GET', isArray:true, cache: true}
     });
 
     var all = function(callback){
-      res.get({}, function(res){
+      escuchasRes.get({}, function(res){
         cacheEscuchas = res;
         callback(res);
       });
@@ -27,7 +28,7 @@ angular.module('chusmearemosApp')
       if (cacheRestantes){
         callback(cacheRestantes)
       }else{
-        res.get({}, function(res){
+        escuchasRes.get({}, function(res){
 
           var temp = [];
           angular.forEach(res, function(item, i){
@@ -48,9 +49,30 @@ angular.module('chusmearemosApp')
       if (cacheEscuchas){
         callback(cacheEscuchas[id])
       }else{
-        res.get({}, function(res){
+        escuchasRes.get({}, function(res){
           cacheEscuchas = res;
           callback(res[id]);
+        });
+      }
+    };
+
+    var byName = function(name, callback){
+      var tryName = name.trim();
+      if (escuchasByName){
+        if(name + '.mp3' in escuchasByName){ callback(escuchasByName[name + '.mp3']); }
+        else{callback(escuchasByName[name]);}
+      }else{
+        escuchasRes.get({}, function(res){
+          var temp = [];
+          angular.forEach(res, function(item, i){
+            var newAdd = angular.copy(item);
+            newAdd.id = i;
+            this.push(newAdd);
+          }, temp);
+
+          escuchasByName = _.indexBy(temp, 'filename');
+          if(name + '.mp3' in escuchasByName){ callback(escuchasByName[name + '.mp3']); }
+          else{callback(escuchasByName[name]);}
         });
       }
     };
@@ -59,6 +81,7 @@ angular.module('chusmearemosApp')
     return {
       all: all,
       byId: byId,
+      byName: byName,
       notGraphed: notGraphed
     };
   });
