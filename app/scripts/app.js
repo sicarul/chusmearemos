@@ -19,7 +19,8 @@ angular
     'ngTouch',
     'ui.router',
     "com.2fdevs.videogular",
-    "com.2fdevs.videogular.plugins.controls"
+    "com.2fdevs.videogular.plugins.controls",
+    'angular-loading-bar'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
