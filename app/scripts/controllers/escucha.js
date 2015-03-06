@@ -8,11 +8,14 @@
  * Controller of the chusmearemosApp
  */
 angular.module('chusmearemosApp')
-  .controller('GrafoEscuchaCtrl', function ($scope, $stateParams, escuchas, $sce) {
+  .controller('EscuchaCtrl', function ($scope, $stateParams, escuchas, $sce, $location) {
+
+    $scope.host =$location.host();
+    $scope.requestId = $stateParams.id;
 
     var format = d3.time.format("%d/%m/%Y %H:%M:%S");
 
-    escuchas.byId($stateParams.id, function(res){
+    escuchas.byId($scope.requestId, function(res){
 
       var escucha = angular.copy(res);
 

@@ -21,11 +21,13 @@ angular
     "com.2fdevs.videogular",
     "com.2fdevs.videogular.plugins.controls",
     'angular-loading-bar',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angulartics',
+    'angulartics.google.analytics'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/grafo");
     //
     // Now set up the states
     $stateProvider
@@ -36,16 +38,20 @@ angular
       controller: 'MainCtrl'
     })
     .state('main.grafo', {
-      url: "",
+      url: "grafo",
       templateUrl: "views/grafo.html",
       controller: 'GrafoCtrl'
     })
       .state('main.grafo.escucha', {
-        url: "escucha/{id:int}",
+        url: "/escucha/{id:int}",
         templateUrl: "views/grafo.escucha.html",
-        controller: 'GrafoEscuchaCtrl'
+        controller: 'EscuchaCtrl'
       })
-
+    .state('main.escucha', {
+        url: "escucha/{id:int}",
+        templateUrl: "views/escucha.html",
+        controller: 'EscuchaCtrl'
+    })
     .state('main.restantes', {
       url: "restantes",
       templateUrl: "views/sindatos.html",
