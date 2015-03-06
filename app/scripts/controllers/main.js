@@ -8,7 +8,7 @@
  * Controller of the chusmearemosApp
  */
 angular.module('chusmearemosApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $state) {
 
 
     $scope.popup = {
@@ -21,4 +21,9 @@ angular.module('chusmearemosApp')
         delay: { show: 150, hide: 100 }
       }
     };
+
+
+    $scope.isActive = function(state) {
+     return $state.includes(state);
+     }
   });

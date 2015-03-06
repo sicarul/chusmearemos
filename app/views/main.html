@@ -18,7 +18,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li ui-sref-active="active"><a ui-sref='.grafo'>Grafo</a></li>
-          <li ui-sref-active="active"><a ui-sref='.restantes.page({pag:1})'>Restantes</a></li>
+          <li ng-class="{active: isActive('main.restantes')}"><a ui-sref='.restantes.page({pag:1})'>Restantes</a></li>
           <li ui-sref-active="active"><a ui-sref='.search'>Buscar</a></li>
         </ul>
 
