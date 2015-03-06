@@ -9,5 +9,16 @@
  */
 angular.module('chusmearemosApp')
   .controller('MainCtrl', function ($scope) {
-    
+
+
+    $scope.popup = {
+      content: '<div align="center"><input id="donar" type="text" style="width:290px;" value="1LgShXaqvHhYtxxwMxy7BCWre7QEbdH9Bu"/><br><img src="images/bitcoin.png "></div>',
+      options: {
+        title: null,
+        placement: 'bottom',
+        html: true,
+        trigger: 'click',
+        delay: { show: 150, hide: 100 }
+      }
+    };
   });
