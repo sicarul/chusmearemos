@@ -56,6 +56,7 @@ module.exports = function(config) {
       'bower_components/angulartics/src/angulartics-woopra.js',
       'bower_components/angulartics/src/angulartics-marketo.js',
       'bower_components/angulartics/src/angulartics-intercom.js',
+      'bower_components/angular-filter/dist/angular-filter.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

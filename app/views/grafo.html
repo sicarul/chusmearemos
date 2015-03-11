@@ -5,36 +5,47 @@
   <h3>Espere por favor</h3>
 </div>
 <div class="col-sm-3" id="metadata" ng-if="selected.node.name && loading == false">
-  <h3>Linea {{selected.node.name}}</h3>
-
-  <table class="table table-striped" ng-if="selected.out.length > 0">
-    <thead>
-      <tr>
-        <th colspan="2">Llamadas salientes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="call in selected.out">
-        <td><a ui-sref=".escucha({id:call.id})">{{call.inicio | date:'medium'}}</a></td>
-        <td><a ui-sref=".escucha({id:call.id})">{{call.destino}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <h2>Linea {{selected.node.name}}</h2>
 
 
-  <table class="table table-striped" ng-if="selected.in.length > 0">
-    <thead>
-      <tr>
-        <th colspan="2">Llamadas entrantes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="call in selected.in">
-        <td><a ui-sref=".escucha({id:call.id})">{{call.inicio | date:'medium'}}</a></td>
-        <td><a ui-sref=".escucha({id:call.id})">{{call.origen}}</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <span  ng-if="selected.out.length > 0">
+    <h3>Llamadas salientes</h3>
+    <accordion>
+      <accordion-group ng-repeat="(key, value) in selected.out | groupBy:'date'">
+          <accordion-heading>
+            <div class="escucha-date">{{key | date:'yyyy-MM-dd'}}</div>
+          </accordion-heading>
+          <table class="table table-striped">
+            <tbody>
+              <tr ng-repeat="call in value">
+                <td>{{call.inicio |date:'HH:MM:ss'}}</td>
+                <td><div class="escucha-linea"><a ui-sref=".escucha({id:call.id})">{{call.origen}}</a></div></td>
+              </tr>
+            </tbody>
+          </table>
+      </accordion-group >
+    </accordion>
+  </span>
+
+  <span  ng-if="selected.in.length > 0">
+    <h3>Llamadas entrantes</h3>
+    <accordion>
+      <accordion-group ng-repeat="(key, value) in selected.in | groupBy:'date'">
+          <accordion-heading>
+            <div class="escucha-date">{{key | date:'yyyy-MM-dd'}}</div>
+          </accordion-heading>
+          <table class="table table-striped">
+            <tbody>
+              <tr ng-repeat="call in value">
+                <td>{{call.inicio |date:'HH:MM:ss'}}</td>
+                <td><div class="escucha-linea"><a ui-sref=".escucha({id:call.id})">{{call.origen}}</a></div></td>
+              </tr>
+            </tbody>
+          </table>
+      </accordion-group >
+    </accordion>
+  </span>
+
 
 </div>
 </div>

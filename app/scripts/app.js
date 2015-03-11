@@ -23,7 +23,8 @@ angular
     'angular-loading-bar',
     'ui.bootstrap',
     'angulartics',
-    'angulartics.google.analytics'
+    'angulartics.google.analytics',
+    'angular.filter'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1

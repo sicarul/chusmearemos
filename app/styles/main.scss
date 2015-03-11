@@ -70,3 +70,19 @@ text {
 .popover{
   max-width:320px;
 }
+
+div.escucha-date{
+  font-size:1.3em;
+  font-weight:bold;
+  text-align:center;
+}
+
+div.escucha-linea{
+  font-size:1.15em;
+  text-align:center;
+}
+
+div#metadata{
+  overflow-y:auto;
+  max-height:500px;
+}

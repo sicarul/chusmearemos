@@ -10,6 +10,7 @@
 angular.module('chusmearemosApp')
   .service('toGraph', function () {
     var format = d3.time.format("%d/%m/%Y %H:%M:%S");
+    var dayFormat = d3.time.format("%d/%m/%Y");
 
     return {
         'transform': function transform(data){
@@ -25,6 +26,10 @@ angular.module('chusmearemosApp')
           if(item.origen && item.destino){
             if(item.inicio){
               item.inicio = format.parse(item.inicio);
+              var dateProcess = new Date(item.inicio);
+              item.date = new Date(dateProcess.getFullYear(), dateProcess.getMonth(), dateProcess.getDate()).getTime();
+            }else{
+              item.date = 'Fecha desconocida';
             }
             if(item.fin){
               item.fin = format.parse(item.fin);
@@ -63,7 +68,7 @@ angular.module('chusmearemosApp')
           var sp = k.split('---');
           return {'source': nodeIds[sp[0]], 'target': nodeIds[sp[1]], 'value': v};
         });
-        
+
 
         return res;
 

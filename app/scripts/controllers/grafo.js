@@ -13,6 +13,7 @@ angular.module('chusmearemosApp')
     $scope.grafo = {};
     $scope.selected = {node:{}, out:[], in:[]};
 
+    $scope.status = {open:{}};
 
     escuchas.all(function(res){
 
