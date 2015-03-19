@@ -8,11 +8,10 @@
  * Controller of the chusmearemosApp
  */
 angular.module('chusmearemosApp')
-  .controller('MainCtrl', function ($scope, $state) {
-
+  .controller('MainCtrl', function ($scope, $state, $timeout, $templateCache) {
 
     $scope.popup = {
-      content: '<div align="center"><input id="donar" type="text" style="width:290px;" value="1LgShXaqvHhYtxxwMxy7BCWre7QEbdH9Bu"/><br><img src="images/bitcoin.png "></div>',
+      content: 'Cargando...',
       options: {
         title: null,
         placement: 'bottom',
@@ -21,6 +20,11 @@ angular.module('chusmearemosApp')
         delay: { show: 150, hide: 100 }
       }
     };
+
+    $timeout(function(){
+      $scope.popup.content = $templateCache.get('views/donatePopup.html')[1];
+    },3000);
+
 
 
     $scope.isActive = function(state) {
